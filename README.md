@@ -12,7 +12,7 @@ You were going to click it anyway. Let this bookmarklet do it for you!
 1. Save your new bookmark.
 
 ```javascript
-javascript:(()=>{if(!["twitter.com","x.com"].includes(window.location.hostname))return;const t=setInterval((()=>document.querySelectorAll('div[role="button"]').forEach((t=>{"Show"===t.textContent&&t.click()}))),1e3);setTimeout((()=>clearInterval(t)),6e5)})();
+javascript:(()=>{if(!["twitter.com","x.com"].includes(window.location.hostname))return;const t=["Show"],e=setInterval((()=>document.querySelectorAll('div[role="button"]').forEach((e=>{t.some((t=>t===e.textContent.trim()))&&e.click()}))),1e3);setTimeout((()=>clearInterval(e)),6e5)})();
 ```
 
 ## Usage
