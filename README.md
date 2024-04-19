@@ -41,7 +41,7 @@ javascript:(() => {
   const intervalDelay = 1000; // 1,000 ms = 1 sec
   const timeoutDelay = 600000; // 600,000 ms = 10 min
   const showAll = () => document.querySelectorAll('div[role="button"]').forEach(button => {
-    if (button.textContent === 'Show') button.click();
+    if (button.textContent.trim() === 'Show') button.click();
   });
   const intervalId = setInterval(showAll, intervalDelay);
   setTimeout(() => clearInterval(intervalId), timeoutDelay);
