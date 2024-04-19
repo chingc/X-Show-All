@@ -12,7 +12,7 @@ You were going to click it anyway. Let this bookmarklet do it for you!
 1. Save your new bookmark.
 
 ```javascript
-javascript:(()=>{if(!["twitter.com","x.com"].includes(window.location.hostname))return;const t=["Show"],e=setInterval((()=>document.querySelectorAll('div[role="button"]').forEach((e=>{t.some((t=>t===e.textContent.trim()))&&e.click()}))),1e3);setTimeout((()=>clearInterval(e)),6e5)})();
+javascript:(()=>{if(!["twitter.com","x.com"].includes(window.location.hostname))return;const t=["Show","表示"],e=setInterval((()=>document.querySelectorAll('div[role="button"]').forEach((e=>{t.some((t=>t===e.textContent.trim()))&&e.click()}))),1e3);setTimeout((()=>clearInterval(e)),6e5)})();
 ```
 
 ## Usage
@@ -40,7 +40,7 @@ javascript:(() => {
   }
   const intervalDelay = 1000; // 1,000 ms = 1 sec
   const timeoutDelay = 600000; // 600,000 ms = 10 min
-  const showText = ['Show'];
+  const showText = ['Show', '表示'];
   const showAll = () => document.querySelectorAll('div[role="button"]').forEach(button => {
     if (showText.some(str => str === button.textContent.trim())) button.click();
   });
