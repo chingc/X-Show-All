@@ -4,6 +4,10 @@ This is a bookmarklet for 𝕏 (Twitter) that will automatically click the "Show
 
 You were going to click it anyway. Let this bookmarklet do it for you!
 
+### Language Support
+
+The bookmarklet currently supports English and Japanese. If you'd like it to support your language let me know what "Show" appears as in your language.
+
 ## Setup
 
 1. Create a new bookmark.
@@ -12,7 +16,7 @@ You were going to click it anyway. Let this bookmarklet do it for you!
 1. Save your new bookmark.
 
 ```javascript
-javascript:(()=>{if(!["twitter.com","x.com"].includes(window.location.hostname))return;const t=setInterval((()=>document.querySelectorAll('div[role="button"]').forEach((t=>{"Show"===t.textContent&&t.click()}))),1e3);setTimeout((()=>clearInterval(t)),6e5)})();
+javascript:(()=>{if(!["twitter.com","x.com"].includes(window.location.hostname))return;const t=["Show","表示"],e=setInterval((()=>document.querySelectorAll('div[role="button"]').forEach((e=>{t.some((t=>t===e.textContent.trim()))&&e.click()}))),1e3);setTimeout((()=>clearInterval(e)),6e5)})();
 ```
 
 ## Usage
@@ -38,11 +42,12 @@ javascript:(() => {
   if (!targetHosts.includes(window.location.hostname)) {
     return;
   }
-  const intervalDelay = 1000; // 1,000 ms = 1 sec
-  const timeoutDelay = 600000; // 600,000 ms = 10 min
+  const showText = ['Show', '表示'];
   const showAll = () => document.querySelectorAll('div[role="button"]').forEach(button => {
-    if (button.textContent === 'Show') button.click();
+    if (showText.some(str => str === button.textContent.trim())) button.click();
   });
+  const timeoutDelay = 600000;  // 600,000 ms = 10 min
+  const intervalDelay = 1000;   // 1,000 ms = 1 sec
   const intervalId = setInterval(showAll, intervalDelay);
   setTimeout(() => clearInterval(intervalId), timeoutDelay);
 })();
